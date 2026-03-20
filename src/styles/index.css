@@ -1,3 +1,60 @@
+body {
+  background: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.palito {
+  width: 20px;
+  height: 100px;
+  background: black;
+  margin-bottom: 0;
+}
+
+.traffic-light {
+  background: black;
+  border-radius: 20px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 80px;
+}
+
+.light {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  opacity: 0.3;
+  transition:
+    opacity 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.red {
+  background: red;
+}
+
+.yellow {
+  background: orange;
+}
+
+.green {
+  background: green;
+}
+
+.brillo {
+  opacity: 1;
+  box-shadow: 0 0 20px 5px currentColor;
+}
+
+.purple {
+  background: purple;
+}
+
 /* 
 
     You can write your own styles here...

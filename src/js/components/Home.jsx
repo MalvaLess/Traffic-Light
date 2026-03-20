@@ -1,28 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+const TrafficLight = () => {
+  const [color, setColor] = useState("red");
+  const [colors, setColors] = useState(["red", "yellow", "green"]);
 
-//create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-            
+  const cycleColor = () => {
+    const currentIndex = colors.indexOf(color);
+    const nextIndex = (currentIndex + 1) % colors.length;
+    setColor(colors[nextIndex]);
+  };
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+  const addPurple = () => {
+    if (!colors.includes("purple")) {
+      setColors([...colors, "purple"]);
+    }
+  };
+
+  return (
+    <div className="d-flex justify-content-center align-items-center vh-100 flex-column">
+      <div className="palito"></div>
+      <div className="traffic-light">
+        {colors.map((c) => (
+          <div
+            key={c}
+            onClick={() => setColor(c)}
+            className={`light ${c} ${color === c ? "brillo" : ""}`}
+          ></div>
+        ))}
+      </div>
+      <div className="mt-3 text-center">
+        <button onClick={cycleColor} className="btn btn-outline-primary me-2">
+          Cycle Color
+        </button>
+        <button onClick={addPurple} className="btn btn-outline-secondary">
+          Add Purple
+        </button>
+      </div>
+    </div>
+  );
 };
 
-export default Home;
+export default TrafficLight;
